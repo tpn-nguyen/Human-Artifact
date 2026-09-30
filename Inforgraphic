@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>When Technology Solves Its Own Problems</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f5f3ee;
+        color: #171717;
+        line-height: 1.6;
+    }
+
+    .container {
+        max-width: 1100px;
+        margin: auto;
+        padding: 60px 25px;
+    }
+
+    .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-size: 13px;
+        color: #666;
+        margin-bottom: 18px;
+    }
+
+    h1 {
+        font-size: clamp(42px, 7vw, 82px);
+        line-height: 0.95;
+        max-width: 900px;
+        letter-spacing: -3px;
+        margin-bottom: 30px;
+    }
+
+    .intro {
+        max-width: 720px;
+        font-size: 20px;
+        color: #444;
+        margin-bottom: 60px;
+    }
+
+    .question {
+        border-left: 5px solid #111;
+        padding: 20px 25px;
+        margin: 50px 0;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    /* FLOW */
+
+    .flow {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        margin: 50px 0;
+    }
+
+    .step {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 16px;
+        padding: 25px;
+        cursor: pointer;
+        transition: all 0.25s ease;
+    }
+
+    .step:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    .step-header {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .number {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background: #111;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        flex-shrink: 0;
+    }
+
+    .step h2 {
+        font-size: 25px;
+    }
+
+    .arrow {
+        text-align: center;
+        font-size: 30px;
+        color: #777;
+    }
+
+    .details {
+        display: none;
+        padding: 20px 10px 5px 65px;
+        color: #555;
+        font-size: 17px;
+    }
+
+    .step.active .details {
+        display: block;
+    }
+
+    /* DATA */
+
+    .data-section {
+        margin: 90px 0;
+    }
+
+    .section-title {
+        font-size: 38px;
+        margin-bottom: 35px;
+    }
+
+    .data-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .data-card {
+        background: #111;
+        color: white;
+        padding: 30px;
+        border-radius: 18px;
+        min-height: 220px;
+    }
+
+    .data-number {
+        font-size: 52px;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    .data-card p {
+        color: #ddd;
+    }
+
+    /* LOOP */
+
+    .loop {
+        margin: 80px 0;
+        padding: 45px;
+        border-radius: 25px;
+        background: white;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+    .loop h2 {
+        font-size: 40px;
+        margin-bottom: 25px;
+    }
+
+    .loop-chain {
+        font-size: 21px;
+        font-weight: bold;
+        margin: 30px auto;
+        max-width: 800px;
+    }
+
+    .loop-chain span {
+        display: inline-block;
+        margin: 8px;
+        padding: 10px 15px;
+        border: 1px solid #aaa;
+        border-radius: 10px;
+    }
+
+    /* HUMAN */
+
+    .human {
+        background: #dedbd2;
+        border-radius: 25px;
+        padding: 50px;
+        margin-top: 70px;
+    }
+
+    .human h2 {
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+
+    .human p {
+        max-width: 750px;
+        font-size: 20px;
+    }
+
+    footer {
+        margin-top: 80px;
+        padding-top: 30px;
+        border-top: 1px solid #bbb;
+        color: #666;
+        font-size: 14px;
+    }
+
+    @media (max-width: 750px) {
+        .data-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .question {
+            font-size: 23px;
+        }
+
+        .human {
+            padding: 30px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="eyebrow">
+        Humans × Technology
+    </div>
+
+    <h1>
+        When Technology Becomes the Solution to Its Own Problems
+    </h1>
+
+    <p class="intro">
+        Technology gives us new abilities. But as those abilities become more powerful,
+        we increasingly use technology to control, verify, and contain the problems
+        created by technology itself.
+    </p>
+
+    <div class="question">
+        If AI can create information — and AI can also help us decide what information
+        to trust — where does human judgment fit?
+    </div>
+
+
+    <!-- INTERACTIVE FLOW -->
+
+    <div class="flow">
+
+        <div class="step" onclick="toggleStep(this)">
+            <div class="step-header">
+                <div class="number">1</div>
+                <h2>AI makes information easier to create</h2>
+            </div>
+
+            <div class="details">
+                Generative AI can produce text, images, audio, and video at a scale
+                that was previously difficult or expensive for individuals to achieve.
+            </div>
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <div class="step" onclick="toggleStep(this)">
+            <div class="step-header">
+                <div class="number">2</div>
+                <h2>More synthetic content changes what we trust</h2>
+            </div>
+
+            <div class="details">
+                When realistic synthetic content becomes easier to produce, seeing
+                something is no longer enough to establish that it is authentic.
+                Verification becomes more important.
+            </div>
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <div class="step" onclick="toggleStep(this)">
+            <div class="step-header">
+                <div class="number">3</div>
+                <h2>We need technology to verify technology</h2>
+            </div>
+
+            <div class="details">
+                Detection systems, content provenance tools, and other technical
+                systems are increasingly used to identify or contextualize synthetic
+                content.
+            </div>
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <div class="step" onclick="toggleStep(this)">
+            <div class="step-header">
+                <div class="number">4</div>
+                <h2>But verification creates another question</h2>
+            </div>
+
+            <div class="details">
+                If an automated system tells us whether something is trustworthy,
+                we still have to decide how much authority to give that system.
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- DATA -->
+
+    <section class="data-section">
+
+        <div class="eyebrow">
+            The bigger question
+        </div>
+
+        <h2 class="section-title">
+            Technology doesn't only change what we can do.
+            It changes what we have to decide.
+        </h2>
+
+        <div class="data-grid">
+
+            <div class="data-card">
+                <div class="data-number">01</div>
+                <p>
+                    <strong>Creation</strong><br>
+                    AI lowers the barrier to producing convincing synthetic content.
+                </p>
+            </div>
+
+            <div class="data-card">
+                <div class="data-number">02</div>
+                <p>
+                    <strong>Verification</strong><br>
+                    We increasingly need tools that help us determine where information
+                    came from and whether it can be trusted.
+                </p>
+            </div>
+
+            <div class="data-card">
+                <div class="data-number">03</div>
+                <p>
+                    <strong>Authority</strong><br>
+                    Someone — or something — still has to decide what counts as
+                    credible evidence.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- THE LOOP -->
+
+    <section class="loop">
+
+        <div class="eyebrow">
+            The technological loop
+        </div>
+
+        <h2>
+            Can technology contain technology?
+        </h2>
+
+        <div class="loop-chain">
+
+            <span>More technological power</span>
+            →
+            <span>New problems</span>
+            →
+            <span>New technological solutions</span>
+            →
+            <span>New questions about authority</span>
+
+        </div>
+
+        <p>
+            The challenge may no longer be simply creating more powerful technology.
+            It may be figuring out how much power we should give the systems we build
+            to manage that technology.
+        </p>
+
+    </section>
+
+
+    <!-- HUMAN JUDGMENT -->
+
+    <section class="human">
+
+        <div class="eyebrow">
+            The human question
+        </div>
+
+        <h2>
+            What should remain ours to decide?
+        </h2>
+
+        <p>
+            AI can generate information. AI can analyze information.
+            AI can even help us evaluate information. But none of that eliminates
+            the human question of what deserves our trust.
+        </p>
+
+        <br>
+
+        <p>
+            Maybe the important issue isn't whether technology can make decisions
+            for us. It is whether we remain aware of when we are handing those
+            decisions over.
+        </p>
+
+    </section>
+
+
+    <footer>
+
+        <strong>Sources & further reading</strong><br><br>
+
+        This infographic is a work in progress. Data points and claims should be
+        replaced or supplemented with verified sources before publication.
+
+        <br><br>
+
+        Course connection:
+        Honors Seminar V — Aesthetics, Values, and Authority.
+
+    </footer>
+
+</div>
+
+
+<script>
+
+function toggleStep(element) {
+
+    element.classList.toggle("active");
+
+}
+
+</script>
+
+</body>
+</html>
