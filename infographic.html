@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>My Human Artifact | Infographic</title>
+  <title>Can We Still Control Technology?</title>
 
   <style>
     * {
@@ -13,111 +13,734 @@
       padding: 0;
     }
 
+    :root {
+      --pink: #d96b91;
+      --dark-pink: #b84f76;
+      --light-pink: #ffe5ee;
+      --soft-pink: #fff5f8;
+      --deep: #442d38;
+      --muted: #765d68;
+      --white: #ffffff;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: #fff5f8;
-      color: #4a3a40;
+      background:
+        radial-gradient(circle at 10% 10%, #ffd6e4 0, transparent 25%),
+        radial-gradient(circle at 90% 80%, #ffdce8 0, transparent 25%),
+        var(--soft-pink);
+      color: var(--deep);
       min-height: 100vh;
-      padding: 30px;
     }
 
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      background: white;
-      border-radius: 28px;
-      padding: 50px;
-      box-shadow: 0 15px 40px rgba(214, 145, 166, 0.18);
-      border: 1px solid #f8dce5;
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    .nav {
+      position: sticky;
+      top: 15px;
+      z-index: 100;
+      width: min(1100px, calc(100% - 30px));
+      margin: 15px auto 0;
+      padding: 12px 18px;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(15px);
+      border: 1px solid #f4cbd8;
+      border-radius: 50px;
+      box-shadow: 0 10px 30px rgba(184, 79, 118, 0.12);
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
     }
 
-    .hello {
-      color: #d7839d;
-      font-size: 15px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-
-    h1 {
-      color: #b85c7a;
-      font-size: 45px;
-      margin-bottom: 20px;
-    }
-
-    .intro {
-      font-size: 18px;
-      line-height: 1.7;
-      color: #66545b;
-      margin-bottom: 35px;
-    }
-
-    .section {
-      background: #fff0f5;
-      padding: 25px;
-      border-radius: 20px;
-      margin-bottom: 20px;
-      border: 1px solid #f8dce5;
-    }
-
-    .section h2 {
-      color: #c66c89;
-      margin-bottom: 12px;
-    }
-
-    .section p {
-      font-size: 17px;
-      line-height: 1.7;
-    }
-
-    .question {
-      background: #fce5ed;
-      padding: 28px;
-      border-radius: 20px;
-      margin-top: 30px;
-    }
-
-    .question h2 {
-      color: #b85c7a;
-      margin-bottom: 12px;
-    }
-
-    .question p {
-      line-height: 1.7;
-      font-size: 17px;
-    }
-
-    .back-button {
-      display: inline-block;
-      margin-top: 30px;
-      background: #d7839d;
-      color: white;
-      text-decoration: none;
-      padding: 14px 25px;
+    .nav button {
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      padding: 10px 16px;
       border-radius: 30px;
+      cursor: pointer;
       font-weight: bold;
       transition: 0.3s;
     }
 
-    .back-button:hover {
-      background: #b85c7a;
+    .nav button:hover,
+    .nav button.active {
+      background: var(--pink);
+      color: white;
       transform: translateY(-2px);
     }
 
-    footer {
-      margin-top: 35px;
+    /* =========================
+       MAIN
+    ========================= */
+
+    .container {
+      width: min(1100px, calc(100% - 30px));
+      margin: 25px auto 60px;
+      background: white;
+      border-radius: 35px;
+      overflow: hidden;
+      box-shadow: 0 25px 70px rgba(184, 79, 118, 0.18);
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 650px;
+      padding: 80px 60px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,.35), transparent 20%),
+        linear-gradient(135deg, #f5a8c0, #d96b91, #a9476d);
+      color: white;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 8px 15px;
+      border: 1px solid rgba(255,255,255,.4);
+      background: rgba(255,255,255,.14);
+      border-radius: 30px;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 {
+      font-size: clamp(45px, 7vw, 78px);
+      line-height: .98;
+      margin-bottom: 25px;
+      letter-spacing: -3px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      max-width: 650px;
+      line-height: 1.7;
+      color: #fff4f8;
+    }
+
+    .floating {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,.1);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .circle1 {
+      width: 300px;
+      height: 300px;
+      right: -80px;
+      top: 60px;
+    }
+
+    .circle2 {
+      width: 180px;
+      height: 180px;
+      right: 230px;
+      bottom: -60px;
+      animation-delay: 1s;
+    }
+
+    .circle3 {
+      width: 80px;
+      height: 80px;
+      right: 80px;
+      bottom: 80px;
+      animation-delay: 2s;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    /* =========================
+       INTRO
+    ========================= */
+
+    .intro {
+      padding: 65px 60px;
       text-align: center;
-      color: #a98b96;
+      background: #fffafd;
+    }
+
+    .intro h2 {
+      color: var(--dark-pink);
+      font-size: 34px;
+      margin-bottom: 15px;
+    }
+
+    .intro p {
+      max-width: 750px;
+      margin: auto;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    /* =========================
+       JOURNEY
+    ========================= */
+
+    .journey {
+      padding: 65px 60px;
+    }
+
+    .section-title {
+      text-align: center;
+      color: var(--dark-pink);
+      font-size: 36px;
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 45px;
+      color: var(--muted);
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 52px;
+      left: 8%;
+      right: 8%;
+      height: 4px;
+      background: #f2bfd0;
+      z-index: 0;
+    }
+
+    .step {
+      position: relative;
+      z-index: 2;
+      border: 2px solid #f3cada;
+      background: white;
+      border-radius: 22px;
+      padding: 22px 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: .35s;
+    }
+
+    .step:hover {
+      transform: translateY(-8px);
+      border-color: var(--pink);
+      box-shadow: 0 15px 35px rgba(217,107,145,.2);
+    }
+
+    .step.active {
+      background: var(--pink);
+      color: white;
+      border-color: var(--pink);
+      transform: translateY(-8px);
+    }
+
+    .step-number {
+      width: 55px;
+      height: 55px;
+      margin: 0 auto 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--light-pink);
+      color: var(--dark-pink);
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .step.active .step-number {
+      background: white;
+    }
+
+    .step h3 {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .step small {
+      opacity: .75;
+    }
+
+    /* =========================
+       DYNAMIC CONTENT
+    ========================= */
+
+    .dynamic {
+      margin-top: 35px;
+      min-height: 230px;
+      padding: 35px;
+      border-radius: 25px;
+      background: linear-gradient(135deg, #fff0f5, #fffafd);
+      border: 1px solid #f2ceda;
+      animation: appear .4s ease;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .dynamic h3 {
+      color: var(--dark-pink);
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .dynamic p {
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 800px;
+    }
+
+    /* =========================
+       CARDS
+    ========================= */
+
+    .problems {
+      padding: 65px 60px;
+      background: #fff7fa;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 35px;
+    }
+
+    .card {
+      padding: 30px;
+      background: white;
+      border: 1px solid #f2d1dc;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: .35s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 0 18px 40px rgba(184,79,118,.13);
+    }
+
+    .card-icon {
+      font-size: 35px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      color: var(--dark-pink);
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--muted);
+    }
+
+    /* =========================
+       INTERACTIVE LOOP
+    ========================= */
+
+    .loop-section {
+      padding: 70px 60px;
+      background: var(--deep);
+      color: white;
+    }
+
+    .loop-section .section-title {
+      color: #ffb6cd;
+    }
+
+    .loop-section .section-subtitle {
+      color: #d9bdc8;
+    }
+
+    .loop {
+      max-width: 850px;
+      margin: auto;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .loop-card {
+      padding: 30px;
+      border-radius: 25px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      cursor: pointer;
+      transition: .4s;
+    }
+
+    .loop-card:hover {
+      background: rgba(255,255,255,.12);
+      transform: scale(1.03);
+    }
+
+    .loop-card h3 {
+      color: #ffb6cd;
+      margin: 10px 0;
+    }
+
+    .loop-card p {
+      color: #ddc7d0;
+    }
+
+    .loop-icon {
+      font-size: 35px;
+    }
+
+    .loop-center {
+      grid-column: 1 / -1;
+      padding: 30px;
+      text-align: center;
+      background: linear-gradient(135deg, #d96b91, #b84f76);
+      border-radius: 25px;
+      font-size: 22px;
+      font-weight: bold;
+      box-shadow: 0 15px 40px rgba(0,0,0,.2);
+    }
+
+    /* =========================
+       RESEARCH
+    ========================= */
+
+    .research {
+      padding: 70px 60px;
+    }
+
+    .research-box {
+      background: #fff5f8;
+      border: 1px solid #f2cad7;
+      padding: 40px;
+      border-radius: 28px;
+    }
+
+    .label {
+      color: var(--pink);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .research-box h2 {
+      color: var(--dark-pink);
+      font-size: 30px;
+      margin: 10px 0 15px;
+    }
+
+    .research-box p {
+      color: var(--muted);
+    }
+
+    .research-flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .research-step {
+      padding: 15px 20px;
+      border-radius: 16px;
+      background: white;
+      border: 1px solid #f0c5d3;
+      color: var(--dark-pink);
+      font-weight: bold;
+    }
+
+    .research-arrow {
+      color: var(--pink);
+      font-size: 25px;
+    }
+
+    /* =========================
+       NIST
+    ========================= */
+
+    .nist {
+      padding: 70px 60px;
+      background: linear-gradient(135deg, #ffe3ed, #fff8fa);
+    }
+
+    .nist-box {
+      background: white;
+      border-radius: 28px;
+      padding: 40px;
+      border: 1px solid #f0cad7;
+    }
+
+    .nist-box h2 {
+      color: var(--dark-pink);
+      margin-bottom: 10px;
+      font-size: 30px;
+    }
+
+    .nist-box > p {
+      color: var(--muted);
+    }
+
+    .nist-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .nist-item {
+      padding: 25px 15px;
+      background: #fff1f6;
+      border-radius: 18px;
+      text-align: center;
+      transition: .3s;
+    }
+
+    .nist-item:hover {
+      transform: translateY(-5px);
+      background: #fbdce7;
+    }
+
+    .nist-item strong {
+      display: block;
+      color: var(--dark-pink);
+      margin-bottom: 7px;
+    }
+
+    /* =========================
+       FINAL
+    ========================= */
+
+    .final {
+      padding: 90px 50px;
+      text-align: center;
+      color: white;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.2), transparent 20%),
+        linear-gradient(135deg, #e88cab, #b84f76);
+    }
+
+    .final h2 {
+      font-size: clamp(38px, 6vw, 60px);
+      margin-bottom: 25px;
+    }
+
+    .final p {
+      max-width: 700px;
+      margin: auto;
+      font-size: 20px;
+      color: #fff1f6;
+    }
+
+    .question-button {
+      margin-top: 35px;
+      border: none;
+      padding: 16px 28px;
+      border-radius: 40px;
+      background: white;
+      color: var(--dark-pink);
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: .3s;
+    }
+
+    .question-button:hover {
+      transform: scale(1.06);
+      box-shadow: 0 10px 30px rgba(0,0,0,.15);
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #392630;
+      color: #d9bdc8;
       font-size: 14px;
     }
 
-    @media (max-width: 600px) {
-      .container {
-        padding: 30px;
+    /* =========================
+       POPUP
+    ========================= */
+
+    .popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(45, 27, 35, .65);
+      backdrop-filter: blur(7px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 999;
+    }
+
+    .popup.show {
+      display: flex;
+    }
+
+    .popup-content {
+      width: min(600px, 100%);
+      background: white;
+      padding: 40px;
+      border-radius: 28px;
+      box-shadow: 0 30px 80px rgba(0,0,0,.25);
+      animation: popup .3s ease;
+      position: relative;
+    }
+
+    @keyframes popup {
+      from {
+        opacity: 0;
+        transform: scale(.9) translateY(20px);
       }
 
-      h1 {
-        font-size: 35px;
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .popup-content h2 {
+      color: var(--dark-pink);
+      margin-bottom: 15px;
+    }
+
+    .popup-content p {
+      color: var(--muted);
+    }
+
+    .close {
+      position: absolute;
+      right: 18px;
+      top: 15px;
+      border: none;
+      background: #ffe5ee;
+      color: var(--dark-pink);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 800px) {
+
+      .hero,
+      .intro,
+      .journey,
+      .problems,
+      .loop-section,
+      .research,
+      .nist {
+        padding: 45px 25px;
+      }
+
+      .timeline {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline::before {
+        display: none;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .loop {
+        grid-template-columns: 1fr;
+      }
+
+      .loop-center {
+        grid-column: auto;
+      }
+
+      .nist-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .nav {
+        border-radius: 20px;
+      }
+
+      .nav button {
+        padding: 8px 10px;
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 500px) {
+
+      .container {
+        width: calc(100% - 20px);
+        margin-top: 15px;
+        border-radius: 25px;
+      }
+
+      .hero {
+        min-height: 550px;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .nist-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .research-flow {
+        flex-direction: column;
+      }
+
+      .research-arrow {
+        transform: rotate(90deg);
       }
     }
   </style>
@@ -125,78 +748,683 @@
 
 <body>
 
+  <!-- NAVIGATION -->
+
+  <nav class="nav">
+
+    <button class="active" onclick="goTo('home', this)">
+      Home
+    </button>
+
+    <button onclick="goTo('journey', this)">
+      Journey
+    </button>
+
+    <button onclick="goTo('problems', this)">
+      Problems
+    </button>
+
+    <button onclick="goTo('cycle', this)">
+      Technology Cycle
+    </button>
+
+    <button onclick="goTo('research', this)">
+      Research
+    </button>
+
+    <button onclick="goTo('nist', this)">
+      NIST
+    </button>
+
+    <button onclick="goTo('final', this)">
+      Conclusion
+    </button>
+
+  </nav>
+
+
   <main class="container">
 
-    <div class="hello">My Human Artifact</div>
+    <!-- HERO -->
 
-    <h1>Human & Technology</h1>
+    <section class="hero" id="home">
 
-    <p class="intro">
-      This infographic explores the relationship between humans
-      and technology, and how technology influences the way we
-      think, learn, communicate, and understand ourselves.
-    </p>
+      <div class="floating circle1"></div>
+      <div class="floating circle2"></div>
+      <div class="floating circle3"></div>
 
-    <section class="section">
-      <h2>01 — Thinking</h2>
+      <div class="hero-content">
 
-      <p>
-        Technology gives us quick access to information and
-        different perspectives. At the same time, it encourages
-        us to think about how we evaluate and understand information.
-      </p>
+        <div class="tag">
+          Human Artifact · 2026
+        </div>
+
+        <h1>
+          Can We Still Control the Technology We Create?
+        </h1>
+
+        <p>
+          We create technology to solve problems.
+          But what happens when the technology begins
+          creating problems of its own?
+        </p>
+
+      </div>
+
     </section>
 
-    <section class="section">
-      <h2>02 — Learning</h2>
+
+    <!-- INTRO -->
+
+    <section class="intro">
+
+      <h2>
+        The Question of Control
+      </h2>
 
       <p>
-        Digital tools make learning more accessible. Online
-        resources, videos, and interactive platforms allow people
-        to learn in different ways and at their own pace.
-      </p>
-    </section>
-
-    <section class="section">
-      <h2>03 — Connection</h2>
-
-      <p>
-        Technology allows people to communicate across distance.
-        Social media, messaging, and video calls can help people
-        maintain relationships and share experiences.
-      </p>
-    </section>
-
-    <section class="section">
-      <h2>04 — Being Human</h2>
-
-      <p>
-        Even as technology becomes more powerful, qualities such
-        as creativity, empathy, curiosity, relationships, and
-        personal experiences remain important parts of being human.
-      </p>
-    </section>
-
-    <section class="question">
-
-      <h2>A Question to Think About</h2>
-
-      <p>
-        As technology becomes a bigger part of everyday life,
-        what should we protect as uniquely human?
+        We often assume that because humans create technology,
+        humans remain in control of it. But once powerful
+        technologies enter the world, they interact with people,
+        institutions, cultures, markets, and other technologies.
       </p>
 
     </section>
 
-    <a class="back-button" href="index.html">
-      ← Back to Home
-    </a>
+
+    <!-- JOURNEY -->
+
+    <section class="journey" id="journey">
+
+      <h2 class="section-title">
+        The Containment Problem
+      </h2>
+
+      <p class="section-subtitle">
+        Click each step to explore how technology can move
+        beyond the intentions of its creators.
+      </p>
+
+      <div class="timeline">
+
+        <div class="step active"
+             onclick="showStep(1, this)">
+
+          <div class="step-number">1</div>
+
+          <h3>Create</h3>
+          <small>Humans build</small>
+
+        </div>
+
+
+        <div class="step"
+             onclick="showStep(2, this)">
+
+          <div class="step-number">2</div>
+
+          <h3>Release</h3>
+          <small>Technology spreads</small>
+
+        </div>
+
+
+        <div class="step"
+             onclick="showStep(3, this)">
+
+          <div class="step-number">3</div>
+
+          <h3>Adapt</h3>
+          <small>People change it</small>
+
+        </div>
+
+
+        <div class="step"
+             onclick="showStep(4, this)">
+
+          <div class="step-number">4</div>
+
+          <h3>Scale</h3>
+          <small>Effects multiply</small>
+
+        </div>
+
+
+        <div class="step"
+             onclick="showStep(5, this)">
+
+          <div class="step-number">5</div>
+
+          <h3>Consequences</h3>
+          <small>Outcomes emerge</small>
+
+        </div>
+
+      </div>
+
+
+      <div class="dynamic" id="stepContent">
+
+        <h3>
+          01 · Humans Create
+        </h3>
+
+        <p>
+          Technology begins with human goals. We design tools
+          to solve problems, improve life, communicate, automate
+          tasks, or expand what people are capable of doing.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- PROBLEMS -->
+
+    <section class="problems" id="problems">
+
+      <h2 class="section-title">
+        When Technology Creates New Problems
+      </h2>
+
+      <p class="section-subtitle">
+        Click a card to explore one example.
+      </p>
+
+      <div class="cards">
+
+        <div class="card"
+             onclick="openPopup(
+               'Artificial Intelligence',
+               'AI can help people access information, automate tasks, and solve complex problems. At the same time, it can generate misinformation, enable manipulation, and introduce new security risks.'
+             )">
+
+          <div class="card-icon">🤖</div>
+
+          <h3>Artificial Intelligence</h3>
+
+          <p>
+            Powerful tools can create both benefits
+            and unintended consequences.
+          </p>
+
+        </div>
+
+
+        <div class="card"
+             onclick="openPopup(
+               'Social Media',
+               'Social media makes communication and information sharing easier, but it can also contribute to misinformation, privacy concerns, manipulation, and changes in how people interact.'
+             )">
+
+          <div class="card-icon">📱</div>
+
+          <h3>Social Media</h3>
+
+          <p>
+            Technology designed to connect people
+            can also influence how people think and behave.
+          </p>
+
+        </div>
+
+
+        <div class="card"
+             onclick="openPopup(
+               'Recommendation Algorithms',
+               'Recommendation systems decide or influence what content users see. At the same time, these systems respond to user behavior, creating a two-way relationship between people and technology.'
+             )">
+
+          <div class="card-icon">⚙️</div>
+
+          <h3>Algorithms</h3>
+
+          <p>
+            Systems influence human behavior
+            while also responding to it.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- TECHNOLOGY CYCLE -->
+
+    <section class="loop-section" id="cycle">
+
+      <h2 class="section-title">
+        The Technology Cycle
+      </h2>
+
+      <p class="section-subtitle">
+        What happens when we use technology to solve problems
+        created or amplified by technology?
+      </p>
+
+
+      <div class="loop">
+
+        <div class="loop-card"
+             onclick="openPopup(
+               'Humans Create',
+               'People design and build technologies with specific goals and expectations.'
+             )">
+
+          <div class="loop-icon">👩‍💻</div>
+
+          <h3>Humans Create</h3>
+
+          <p>
+            We build systems to accomplish something.
+          </p>
+
+        </div>
+
+
+        <div class="loop-card"
+             onclick="openPopup(
+               'Technology Changes Behavior',
+               'Once technology becomes part of everyday life, people adapt their behavior around it.'
+             )">
+
+          <div class="loop-icon">💻</div>
+
+          <h3>Technology Changes Behavior</h3>
+
+          <p>
+            People adapt to the systems they use.
+          </p>
+
+        </div>
+
+
+        <div class="loop-center">
+          Technology creates new problems.
+        </div>
+
+
+        <div class="loop-card"
+             onclick="openPopup(
+               'Human Response',
+               'Humans respond through fact-checking, cybersecurity, safety systems, policy, and other interventions.'
+             )">
+
+          <div class="loop-icon">🔍</div>
+
+          <h3>Humans Respond</h3>
+
+          <p>
+            We use new tools to address emerging problems.
+          </p>
+
+        </div>
+
+
+        <div class="loop-card"
+             onclick="openPopup(
+               'Technology Responds',
+               'Some technologies can respond to human behavior through algorithms, data, feedback, and system changes.'
+             )">
+
+          <div class="loop-icon">🔄</div>
+
+          <h3>Technology Responds</h3>
+
+          <p>
+            Systems react to our behavior and interventions.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- RESEARCH -->
+
+    <section class="research" id="research">
+
+      <h2 class="section-title">
+        When Humans Influence the Algorithm
+      </h2>
+
+      <p class="section-subtitle">
+        A real example of humans interacting with
+        technology that also responds to them.
+      </p>
+
+
+      <div class="research-box">
+
+        <div class="label">
+          Scientific Reports · Field Experiment
+        </div>
+
+        <h2>
+          Can human behavior change what algorithms promote?
+        </h2>
+
+        <p>
+          Research published in Scientific Reports examined
+          how encouraging users to fact-check unreliable articles
+          could influence recommendation algorithms and reduce
+          the visibility of those articles.
+        </p>
+
+
+        <div class="research-flow">
+
+          <div class="research-step">
+            👥 Users fact-check
+          </div>
+
+          <div class="research-arrow">→</div>
+
+          <div class="research-step">
+            ✓ Unreliable content loses support
+          </div>
+
+          <div class="research-arrow">→</div>
+
+          <div class="research-step">
+            🤖 Algorithm responds
+          </div>
+
+          <div class="research-arrow">→</div>
+
+          <div class="research-step">
+            ↓ Less visibility
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- NIST -->
+
+    <section class="nist" id="nist">
+
+      <div class="nist-box">
+
+        <h2>
+          Trying to Manage AI Risk
+        </h2>
+
+        <p>
+          The National Institute of Standards and Technology
+          developed the AI Risk Management Framework to help
+          organizations identify, measure, and manage risks
+          throughout an AI system's lifecycle.
+        </p>
+
+
+        <div class="nist-grid">
+
+          <div class="nist-item">
+
+            <strong>GOVERN</strong>
+
+            Build responsible practices
+
+          </div>
+
+
+          <div class="nist-item">
+
+            <strong>MAP</strong>
+
+            Understand risks and context
+
+          </div>
+
+
+          <div class="nist-item">
+
+            <strong>MEASURE</strong>
+
+            Analyze and assess risks
+
+          </div>
+
+
+          <div class="nist-item">
+
+            <strong>MANAGE</strong>
+
+            Respond to identified risks
+
+          </div>
+
+        </div>
+
+
+        <div class="research-box"
+             style="margin-top:30px;">
+
+          <strong style="color:#b84f76;">
+            Think about it:
+          </strong>
+
+          <p style="margin-top:8px;">
+
+            Is risk management evidence of control —
+            or evidence that we are constantly trying
+            to catch up with technology?
+
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- FINAL -->
+
+    <section class="final" id="final">
+
+      <h2>
+        Maybe Control Is Not Prediction.
+      </h2>
+
+      <p>
+        We may never be able to predict every consequence
+        of a powerful technology. Maybe control means having
+        enough awareness, limits, accountability, and willingness
+        to intervene when something starts going wrong.
+      </p>
+
+      <button class="question-button"
+              onclick="openPopup(
+                'The Final Question',
+                'Just because we can build something, how confident should we be that we can remain responsible for what it becomes? We may not be able to control the entire wave — but can we still steer it?'
+              )">
+
+        Click for the final question →
+
+      </button>
+
+    </section>
+
 
     <footer>
-      Made by Phuong Nguyen · FIU · 2026
+
+      Human Artifact · Phuong Nguyen · FIU · 2026
+
     </footer>
 
   </main>
+
+
+  <!-- POPUP -->
+
+  <div class="popup" id="popup">
+
+    <div class="popup-content">
+
+      <button class="close"
+              onclick="closePopup()">
+        ×
+      </button>
+
+      <h2 id="popupTitle">
+        Title
+      </h2>
+
+      <p id="popupText">
+        Content
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    function goTo(id, button) {
+
+      const section = document.getElementById(id);
+
+      section.scrollIntoView({
+        behavior: "smooth"
+      });
+
+      document
+        .querySelectorAll(".nav button")
+        .forEach(btn => btn.classList.remove("active"));
+
+      button.classList.add("active");
+    }
+
+
+    /* =========================
+       CONTAINMENT STEPS
+    ========================= */
+
+    const stepData = {
+
+      1: {
+        title: "01 · Humans Create",
+        text:
+          "Technology begins with human goals. We design tools to solve problems, improve life, communicate, automate tasks, or expand what people are capable of doing."
+      },
+
+      2: {
+        title: "02 · Technology Is Released",
+        text:
+          "Once a technology enters the world, it becomes available to people, organizations, markets, and institutions beyond its original creators."
+      },
+
+      3: {
+        title: "03 · People Adapt",
+        text:
+          "Users rarely interact with technology exactly as its creators imagined. People discover new uses, adapt systems, and build new behaviors around them."
+      },
+
+      4: {
+        title: "04 · Effects Scale",
+        text:
+          "Digital technologies can spread extremely quickly. A change that begins with a small group can eventually influence millions or even billions of people."
+      },
+
+      5: {
+        title: "05 · Unintended Consequences",
+        text:
+          "New outcomes can emerge from interactions between technology and society. At this point, the original creators may no longer be able to fully predict or control what happens."
+      }
+
+    };
+
+
+    function showStep(number, element) {
+
+      document
+        .querySelectorAll(".step")
+        .forEach(step => step.classList.remove("active"));
+
+      element.classList.add("active");
+
+      const content =
+        document.getElementById("stepContent");
+
+      content.style.animation = "none";
+
+      setTimeout(() => {
+
+        content.style.animation =
+          "appear .4s ease";
+
+        content.innerHTML = `
+          <h3>${stepData[number].title}</h3>
+          <p>${stepData[number].text}</p>
+        `;
+
+      }, 20);
+    }
+
+
+    /* =========================
+       POPUP
+    ========================= */
+
+    function openPopup(title, text) {
+
+      document.getElementById("popupTitle")
+        .textContent = title;
+
+      document.getElementById("popupText")
+        .textContent = text;
+
+      document.getElementById("popup")
+        .classList.add("show");
+    }
+
+
+    function closePopup() {
+
+      document.getElementById("popup")
+        .classList.remove("show");
+    }
+
+
+    /* Close popup by clicking outside */
+
+    document.getElementById("popup")
+      .addEventListener("click", function(event) {
+
+        if (event.target === this) {
+          closePopup();
+        }
+
+      });
+
+
+    /* Close popup with ESC */
+
+    document.addEventListener("keydown", function(event) {
+
+      if (event.key === "Escape") {
+        closePopup();
+      }
+
+    });
+
+  </script>
 
 </body>
 </html>
