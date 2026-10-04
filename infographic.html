@@ -78,6 +78,31 @@
     }
 
     /* =========================
+       BACK HOME BUTTON
+    ========================= */
+
+    .back-home {
+      display: inline-block;
+      margin: 25px 0 0 25px;
+      padding: 11px 20px;
+      border-radius: 30px;
+      background: #fff0f5;
+      color: var(--dark-pink);
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      border: 1px solid #f3cada;
+      transition: all 0.3s ease;
+    }
+
+    .back-home:hover {
+      background: var(--pink);
+      color: white;
+      transform: translateX(-4px);
+      box-shadow: 0 8px 20px rgba(217, 107, 145, 0.2);
+    }
+
+    /* =========================
        MAIN
     ========================= */
 
@@ -180,7 +205,7 @@
     }
 
     /* =========================
-       INTRO
+       INTRO IMAGE
     ========================= */
 
     .intro {
@@ -193,21 +218,6 @@
       display: block;
       width: 100%;
       height: auto;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    .intro h2 {
-      color: var(--dark-pink);
-      font-size: 34px;
-      margin-bottom: 15px;
-    }
-
-    .intro p {
-      max-width: 750px;
-      margin: auto;
-      color: var(--muted);
-      font-size: 18px;
     }
 
     /* =========================
@@ -450,62 +460,6 @@
     }
 
     /* =========================
-       RESEARCH
-    ========================= */
-
-    .research {
-      padding: 70px 60px;
-    }
-
-    .research-box {
-      background: #fff5f8;
-      border: 1px solid #f2cad7;
-      padding: 40px;
-      border-radius: 28px;
-    }
-
-    .label {
-      color: var(--pink);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 13px;
-      font-weight: bold;
-    }
-
-    .research-box h2 {
-      color: var(--dark-pink);
-      font-size: 30px;
-      margin: 10px 0 15px;
-    }
-
-    .research-box p {
-      color: var(--muted);
-    }
-
-    .research-flow {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
-
-    .research-step {
-      padding: 15px 20px;
-      border-radius: 16px;
-      background: white;
-      border: 1px solid #f0c5d3;
-      color: var(--dark-pink);
-      font-weight: bold;
-    }
-
-    .research-arrow {
-      color: var(--pink);
-      font-size: 25px;
-    }
-
-    /* =========================
        NIST
     ========================= */
 
@@ -680,11 +634,9 @@
     @media (max-width: 800px) {
 
       .hero,
-      .intro,
       .journey,
       .problems,
       .loop-section,
-      .research,
       .nist {
         padding: 45px 25px;
       }
@@ -721,6 +673,10 @@
         padding: 8px 10px;
         font-size: 12px;
       }
+
+      .back-home {
+        margin-left: 20px;
+      }
     }
 
     @media (max-width: 500px) {
@@ -741,14 +697,6 @@
 
       .nist-grid {
         grid-template-columns: 1fr;
-      }
-
-      .research-flow {
-        flex-direction: column;
-      }
-
-      .research-arrow {
-        transform: rotate(90deg);
       }
     }
   </style>
@@ -789,6 +737,13 @@
 
   <main class="container">
 
+    <!-- BACK TO HOME -->
+
+    <a href="index.html" class="back-home">
+      ← Back to Home
+    </a>
+
+
     <!-- HERO -->
 
     <section class="hero" id="home">
@@ -818,11 +773,11 @@
     </section>
 
 
-    <!-- INTRO -->
+    <!-- INTRO IMAGE -->
 
     <section class="intro">
 
-    <img src="background.png" alt="Technology and human control">
+      <img src="background.png" alt="Technology and human control">
 
     </section>
 
