@@ -78,31 +78,6 @@
     }
 
     /* =========================
-       BACK HOME BUTTON
-    ========================= */
-
-    .back-home {
-      display: inline-block;
-      margin: 25px 0 0 25px;
-      padding: 11px 20px;
-      border-radius: 30px;
-      background: #fff0f5;
-      color: var(--dark-pink);
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 14px;
-      border: 1px solid #f3cada;
-      transition: all 0.3s ease;
-    }
-
-    .back-home:hover {
-      background: var(--pink);
-      color: white;
-      transform: translateX(-4px);
-      box-shadow: 0 8px 20px rgba(217, 107, 145, 0.2);
-    }
-
-    /* =========================
        MAIN
     ========================= */
 
@@ -218,6 +193,7 @@
       display: block;
       width: 100%;
       height: auto;
+      object-fit: contain;
     }
 
     /* =========================
@@ -348,6 +324,7 @@
       color: var(--muted);
       font-size: 17px;
       max-width: 800px;
+      line-height: 1.7;
     }
 
     /* =========================
@@ -392,10 +369,11 @@
 
     .card p {
       color: var(--muted);
+      line-height: 1.6;
     }
 
     /* =========================
-       INTERACTIVE LOOP
+       TECHNOLOGY CYCLE
     ========================= */
 
     .loop-section {
@@ -442,6 +420,7 @@
 
     .loop-card p {
       color: #ddc7d0;
+      line-height: 1.6;
     }
 
     .loop-icon {
@@ -483,6 +462,7 @@
 
     .nist-box > p {
       color: var(--muted);
+      line-height: 1.7;
     }
 
     .nist-grid {
@@ -498,6 +478,8 @@
       border-radius: 18px;
       text-align: center;
       transition: .3s;
+      color: var(--muted);
+      line-height: 1.5;
     }
 
     .nist-item:hover {
@@ -533,6 +515,7 @@
       max-width: 700px;
       margin: auto;
       font-size: 20px;
+      line-height: 1.7;
       color: #fff1f6;
     }
 
@@ -553,6 +536,128 @@
       transform: scale(1.06);
       box-shadow: 0 10px 30px rgba(0,0,0,.15);
     }
+
+    /* =========================
+       SOURCES
+    ========================= */
+
+    .sources {
+      padding: 75px 60px;
+      background: #fff9fb;
+    }
+
+    .sources-box {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .sources-label {
+      color: var(--pink);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .sources-box > h2 {
+      color: var(--dark-pink);
+      font-size: 38px;
+      margin-bottom: 12px;
+    }
+
+    .sources-intro {
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 700px;
+      margin-bottom: 35px;
+    }
+
+    .source-card {
+      display: flex;
+      gap: 25px;
+      padding: 30px;
+      margin-bottom: 18px;
+      background: white;
+      border: 1px solid #f1cfda;
+      border-radius: 24px;
+      transition: .35s ease;
+    }
+
+    .source-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(184, 79, 118, .12);
+      border-color: #e9a9bd;
+    }
+
+    .source-number {
+      flex-shrink: 0;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--light-pink);
+      color: var(--dark-pink);
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .source-content h3 {
+      color: var(--dark-pink);
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .source-content p {
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 10px;
+    }
+
+    .source-content strong {
+      color: #5b3b48;
+    }
+
+    .source-link {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 9px 16px;
+      border-radius: 20px;
+      background: var(--light-pink);
+      color: var(--dark-pink);
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: .3s;
+    }
+
+    .source-link:hover {
+      background: var(--pink);
+      color: white;
+      transform: translateX(4px);
+    }
+
+    .citation-note {
+      margin-top: 25px;
+      padding: 22px 25px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #ffe7ef, #fff5f8);
+      color: var(--muted);
+      line-height: 1.6;
+      border: 1px solid #f2d0db;
+    }
+
+    .citation-note span {
+      color: var(--pink);
+      font-size: 20px;
+      margin-right: 8px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
 
     footer {
       text-align: center;
@@ -611,6 +716,7 @@
 
     .popup-content p {
       color: var(--muted);
+      line-height: 1.7;
     }
 
     .close {
@@ -637,7 +743,8 @@
       .journey,
       .problems,
       .loop-section,
-      .nist {
+      .nist,
+      .sources {
         padding: 45px 25px;
       }
 
@@ -673,10 +780,6 @@
         padding: 8px 10px;
         font-size: 12px;
       }
-
-      .back-home {
-        margin-left: 20px;
-      }
     }
 
     @media (max-width: 500px) {
@@ -689,6 +792,7 @@
 
       .hero {
         min-height: 550px;
+        padding: 45px 25px;
       }
 
       .hero h1 {
@@ -698,13 +802,28 @@
       .nist-grid {
         grid-template-columns: 1fr;
       }
+
+      .source-card {
+        flex-direction: column;
+      }
+
+      .source-number {
+        width: 48px;
+        height: 48px;
+      }
+
+      .sources-box > h2 {
+        font-size: 30px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- NAVIGATION -->
+  <!-- =========================
+       NAVIGATION
+  ========================= -->
 
   <nav class="nav">
 
@@ -732,19 +851,18 @@
       Conclusion
     </button>
 
+    <button onclick="goTo('sources', this)">
+      Sources
+    </button>
+
   </nav>
 
 
   <main class="container">
 
-    <!-- BACK TO HOME -->
-
-    <a href="index.html" class="back-home">
-      ← Back to Home
-    </a>
-
-
-    <!-- HERO -->
+    <!-- =========================
+         HERO
+    ========================= -->
 
     <section class="hero" id="home">
 
@@ -773,16 +891,23 @@
     </section>
 
 
-    <!-- INTRO IMAGE -->
+    <!-- =========================
+         INTRO IMAGE
+    ========================= -->
 
     <section class="intro">
 
-      <img src="background.png" alt="Technology and human control">
+      <img
+        src="background.png"
+        alt="Technology and human control"
+      >
 
     </section>
 
 
-    <!-- JOURNEY -->
+    <!-- =========================
+         JOURNEY
+    ========================= -->
 
     <section class="journey" id="journey">
 
@@ -803,6 +928,7 @@
           <div class="step-number">1</div>
 
           <h3>Create</h3>
+
           <small>Humans build</small>
 
         </div>
@@ -814,6 +940,7 @@
           <div class="step-number">2</div>
 
           <h3>Release</h3>
+
           <small>Technology spreads</small>
 
         </div>
@@ -825,6 +952,7 @@
           <div class="step-number">3</div>
 
           <h3>Adapt</h3>
+
           <small>People change it</small>
 
         </div>
@@ -836,6 +964,7 @@
           <div class="step-number">4</div>
 
           <h3>Scale</h3>
+
           <small>Effects multiply</small>
 
         </div>
@@ -847,6 +976,7 @@
           <div class="step-number">5</div>
 
           <h3>Consequences</h3>
+
           <small>Outcomes emerge</small>
 
         </div>
@@ -871,7 +1001,9 @@
     </section>
 
 
-    <!-- PROBLEMS -->
+    <!-- =========================
+         PROBLEMS
+    ========================= -->
 
     <section class="problems" id="problems">
 
@@ -943,7 +1075,9 @@
     </section>
 
 
-    <!-- TECHNOLOGY CYCLE -->
+    <!-- =========================
+         TECHNOLOGY CYCLE
+    ========================= -->
 
     <section class="loop-section" id="cycle">
 
@@ -1036,7 +1170,9 @@
     </section>
 
 
-    <!-- NIST -->
+    <!-- =========================
+         NIST
+    ========================= -->
 
     <section class="nist" id="nist">
 
@@ -1095,13 +1231,13 @@
 
 
         <div class="research-box"
-             style="margin-top:30px;">
+             style="margin-top:30px; padding:25px; background:#fff5f8; border-radius:20px; border:1px solid #f2cad7;">
 
           <strong style="color:#b84f76;">
             Think about it:
           </strong>
 
-          <p style="margin-top:8px;">
+          <p style="margin-top:8px; color:#765d68;">
 
             Is risk management evidence of control —
             or evidence that we are constantly trying
@@ -1116,7 +1252,9 @@
     </section>
 
 
-    <!-- FINAL -->
+    <!-- =========================
+         FINAL
+    ========================= -->
 
     <section class="final" id="final">
 
@@ -1144,6 +1282,136 @@
     </section>
 
 
+    <!-- =========================
+         SOURCES
+    ========================= -->
+
+    <section class="sources" id="sources">
+
+      <div class="sources-box">
+
+        <div class="sources-label">
+          References
+        </div>
+
+        <h2>
+          Sources & Further Reading
+        </h2>
+
+        <p class="sources-intro">
+          The ideas in this Human Artifact are informed by
+          research on AI risk management and Mustafa Suleyman's
+          discussion of the "containment problem."
+        </p>
+
+
+        <!-- SOURCE 1 -->
+
+        <div class="source-card">
+
+          <div class="source-number">
+            01
+          </div>
+
+          <div class="source-content">
+
+            <h3>
+              National Institute of Standards and Technology (NIST)
+            </h3>
+
+            <p>
+              <strong>
+                AI Risk Management Framework (AI RMF)
+              </strong>
+            </p>
+
+            <p>
+              NIST developed the AI Risk Management Framework
+              to help organizations identify, measure, and manage
+              risks associated with artificial intelligence throughout
+              an AI system's lifecycle.
+            </p>
+
+            <a
+              href="https://www.nist.gov/itl/ai-risk-management-framework"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="source-link"
+            >
+              Visit NIST →
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <!-- SOURCE 2 -->
+
+        <div class="source-card">
+
+          <div class="source-number">
+            02
+          </div>
+
+          <div class="source-content">
+
+            <h3>
+              Mustafa Suleyman & Michael Bhaskar
+            </h3>
+
+            <p>
+              <strong>
+                The Coming Wave: Technology, Power, and the
+                Twenty-first Century's Greatest Dilemma
+              </strong>
+            </p>
+
+            <p>
+              The book explores the "containment problem" —
+              the challenge of maintaining control over powerful
+              technologies as they spread through society and
+              create consequences that may be difficult to predict.
+            </p>
+
+            <a
+              href="https://www.penguinrandomhouse.com/books/722674/the-coming-wave-by-mustafa-suleyman-with-michael-bhaskar/9780593593967/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="source-link"
+            >
+              View the Book →
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <!-- FINAL SOURCE NOTE -->
+
+        <div class="citation-note">
+
+          <span>♡</span>
+
+          These sources helped shape the central question of this
+          artifact:
+
+          <em>
+            Can we still control the technology we create?
+          </em>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
     <footer>
 
       Human Artifact · Phuong Nguyen · FIU · 2026
@@ -1153,7 +1421,9 @@
   </main>
 
 
-  <!-- POPUP -->
+  <!-- =========================
+       POPUP
+  ========================= -->
 
   <div class="popup" id="popup">
 
@@ -1207,30 +1477,35 @@
 
       1: {
         title: "01 · Humans Create",
+
         text:
           "Technology begins with human goals. We design tools to solve problems, improve life, communicate, automate tasks, or expand what people are capable of doing."
       },
 
       2: {
         title: "02 · Technology Is Released",
+
         text:
           "Once a technology enters the world, it becomes available to people, organizations, markets, and institutions beyond its original creators."
       },
 
       3: {
         title: "03 · People Adapt",
+
         text:
           "Users rarely interact with technology exactly as its creators imagined. People discover new uses, adapt systems, and build new behaviors around them."
       },
 
       4: {
         title: "04 · Effects Scale",
+
         text:
           "Digital technologies can spread extremely quickly. A change that begins with a small group can eventually influence millions or even billions of people."
       },
 
       5: {
         title: "05 · Unintended Consequences",
+
         text:
           "New outcomes can emerge from interactions between technology and society. At this point, the original creators may no longer be able to fully predict or control what happens."
       }
@@ -1289,7 +1564,9 @@
     }
 
 
-    /* Close popup by clicking outside */
+    /* =========================
+       CLOSE POPUP OUTSIDE
+    ========================= */
 
     document.getElementById("popup")
       .addEventListener("click", function(event) {
@@ -1301,7 +1578,9 @@
       });
 
 
-    /* Close popup with ESC */
+    /* =========================
+       CLOSE POPUP WITH ESC
+    ========================= */
 
     document.addEventListener("keydown", function(event) {
 
