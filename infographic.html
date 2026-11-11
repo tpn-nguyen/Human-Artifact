@@ -55,6 +55,7 @@
       box-shadow: 0 10px 30px rgba(184, 79, 118, 0.12);
       display: flex;
       justify-content: center;
+      align-items: center;
       gap: 8px;
       flex-wrap: wrap;
     }
@@ -72,6 +73,25 @@
 
     .nav button:hover,
     .nav button.active {
+      background: var(--pink);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* BACK LINK (về trang giới thiệu) */
+
+    .nav .back-link {
+      color: var(--dark-pink);
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 13.33px;
+      padding: 10px 16px;
+      border-radius: 30px;
+      background: var(--light-pink);
+      transition: 0.3s;
+    }
+
+    .nav .back-link:hover {
       background: var(--pink);
       color: white;
       transform: translateY(-2px);
@@ -667,6 +687,24 @@
       font-size: 14px;
     }
 
+    footer .footer-back {
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 10px 20px;
+      border-radius: 30px;
+      background: rgba(255, 182, 205, 0.15);
+      color: #ffb6cd;
+      text-decoration: none;
+      font-weight: bold;
+      transition: .3s;
+    }
+
+    footer .footer-back:hover {
+      background: #d96b91;
+      color: white;
+      transform: translateY(-2px);
+    }
+
     /* =========================
        POPUP
     ========================= */
@@ -776,7 +814,8 @@
         border-radius: 20px;
       }
 
-      .nav button {
+      .nav button,
+      .nav .back-link {
         padding: 8px 10px;
         font-size: 12px;
       }
@@ -826,6 +865,8 @@
   ========================= -->
 
   <nav class="nav">
+
+    <a href="index.html" class="back-link">← About Me</a>
 
     <button class="active" onclick="goTo('home', this)">
       Home
@@ -1414,6 +1455,10 @@
 
     <footer>
 
+      <a href="index.html" class="footer-back">← Back to About Me</a>
+
+      <br>
+
       Human Artifact · Phuong Nguyen · FIU · 2026
 
     </footer>
@@ -1461,12 +1506,61 @@
         behavior: "smooth"
       });
 
-      document
-        .querySelectorAll(".nav button")
-        .forEach(btn => btn.classList.remove("active"));
-
-      button.classList.add("active");
+      setActiveNav(id);
     }
+
+
+    /* =========================
+       AUTO-HIGHLIGHT NAV WHEN SCROLLING
+    ========================= */
+
+    const navSections = [
+      "home",
+      "journey",
+      "problems",
+      "cycle",
+      "nist",
+      "final",
+      "sources"
+    ];
+
+    function setActiveNav(id) {
+
+      const index = navSections.indexOf(id);
+      const buttons = document.querySelectorAll(".nav button");
+
+      buttons.forEach((btn, i) => {
+        btn.classList.toggle("active", i === index);
+      });
+    }
+
+    function updateNavOnScroll() {
+
+      const trigger = window.innerHeight * 0.35;
+      let current = navSections[0];
+
+      navSections.forEach(id => {
+        const section = document.getElementById(id);
+
+        if (section && section.getBoundingClientRect().top <= trigger) {
+          current = id;
+        }
+      });
+
+      // Nếu đã cuộn tới cuối trang thì chọn mục cuối cùng
+      const atBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 5;
+
+      if (atBottom) {
+        current = navSections[navSections.length - 1];
+      }
+
+      setActiveNav(current);
+    }
+
+    window.addEventListener("scroll", updateNavOnScroll, { passive: true });
+    window.addEventListener("load", updateNavOnScroll);
 
 
     /* =========================
